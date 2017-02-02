@@ -1,25 +1,35 @@
-import {Component, Input} from "angular2/core";
+import {Component, Input, Output, EventEmitter} from "angular2/core";
 
 @Component({
     selector:"counter",
     template:`
+    <h1> Angular 2 : Exercise - Two & Three</h1>
     <div class="todo">
-    <input value="{{count}}" [(ngModel)]="count" />
+    <input value="{{counterValue}}" [(ngModel)]="counterValue" />
     <button type="button" (click)="decrement();"> - </button>
-    <span> {{count}} </span>
     <button type="button" (click)="increment();"> + </button>
+    <p> counter value = {{counterValue}} </p>
     </div>
-    `
+    `,
+     styles:['p.red:{color:red;}']
 })
 
 export class CounterComponent{
-    @Input()
-    count:number=0
+    @Input()counterValue:number=10
+    @Output() counterChange = new EventEmitter();
     increment(){
-        this.count++;
+        this.counterValue++;
+        this.counterChange.emit({
+            value:this.counterValue
+        })
     }
     decrement(){
-        this.count--;
+        this.counterValue--;
+        this.counterChange.emit({
+            value:this.counterValue
+        })
     }
-
+    getTrue(){
+        return true;
+    }
 }

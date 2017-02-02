@@ -1,16 +1,17 @@
-import {Component} from 'angular2/core';
-import {shoppingListComponent} from "./shopping-list.component";
-import {CounterComponent} from "./counter.component";
+import { Component } from 'angular2/core';
+import { CounterComponent } from "./counter.component";
+import { CustomCounterComponent } from "./custom.component"
 
 @Component({
     selector: 'my-app',
     template: `
-        this is the app Component
-        <shopping-list></shopping-list>
-        <counter></counter>
+        <custom-counter></custom-counter>
+        <counter></counter> <br/><br/>
     `,
-    directives:[shoppingListComponent, CounterComponent]
+    directives:[
+        CounterComponent,
+        CustomCounterComponent
+        ]
 })
 export class AppComponent {
-
 }
